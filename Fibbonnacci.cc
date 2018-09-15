@@ -1,21 +1,25 @@
 #include <iostream>
 using namespace std; 
-/* I tried to find the way to store longer variable, but this only work up to 98*/
 unsigned long long int Fibonacci(unsigned long long int x, unsigned long long int y){
   unsigned long long int temp = x+y; 
   return temp;
 }
 
 int main(){
-  int  n;
+  int  n, x;
   cout <<"Enter the amount of numbers in the Fibonacci sequence to be printed."<< endl;
   cin >> n;
-  unsigned long long int sequence[n-1];
+  /* was unable to track odd number without x = n-1*/
+  x = n-1;
+  unsigned long long int sequence[x];
   sequence[0] = 0;
   sequence[1] = 1; 
-  if (n<=0){
-    /* :> 0 and less will not be printed*/
+  if (n==0){
+    /* failsafe for 0*/
     cout <<"There is no number to be printed."<< endl;
+  }else if(n<0){
+    /*failsafe for negative numbers*/
+    cout <<"Input a positive integer."<< endl;
   }else{
     for(int k=2;k<n;k++){
       sequence[k] = Fibonacci(sequence[k-2], sequence[k-1]); 
